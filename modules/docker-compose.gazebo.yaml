@@ -16,4 +16,4 @@ services:
     profiles: [deploy, develop]
     command: /bin/bash -c "ros2 launch gazebo sim.launch.py"
     volumes:
-      - ../src/gazebo/launch:/root/src/gazebo/launch
+      - ../src/gazebo/launch:/opt/watonomous/gazebo/share/gazebo/launch:ro

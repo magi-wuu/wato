@@ -6,6 +6,7 @@ FROM ${BASE_IMAGE} AS source
 WORKDIR ${AMENT_WS}/src
 
 # Copy in source code 
+COPY src/robot/navigation_common navigation_common
 COPY src/robot/odometry_spoof odometry_spoof
 COPY src/robot/costmap costmap
 COPY src/robot/map_memory map_memory
@@ -45,7 +46,8 @@ FROM dependencies AS build
 WORKDIR ${AMENT_WS}
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build \
-        --cmake-args -DCMAKE_BUILD_TYPE=Release --install-base ${WATONOMOUS_INSTALL}
+        --cmake-args -DCMAKE_BUILD_TYPE=Release --install-base ${WATONOMOUS_INSTALL} && \
+    colcon test --install-base ${WATONOMOUS_INSTALL} --return-code-on-test-failure && colcon test-result --verbose
 
 # Source and Build Artifact Cleanup 
 RUN rm -rf src/* build/* devel/* install/* log/*

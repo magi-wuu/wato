@@ -8,6 +8,8 @@ import os
 
 def generate_launch_description():
     ld = LaunchDescription() # Begin building a launch description
+    ld.add_action(DeclareLaunchArgument('use_sim_time', default_value='true'))
+    sim_time = {'use_sim_time': LaunchConfiguration('use_sim_time')}
 
     #################### Costmap Node #####################
     costmap_pkg_prefix = get_package_share_directory('costmap')
@@ -23,7 +25,7 @@ def generate_launch_description():
         package='costmap',
         name='costmap_node',
         executable='costmap_node',
-        parameters=[LaunchConfiguration('costmap_param_file')],
+        parameters=[sim_time, LaunchConfiguration('costmap_param_file')],
     )
     ld.add_action(costmap_param)
     ld.add_action(costmap_node)
@@ -42,7 +44,7 @@ def generate_launch_description():
         package='map_memory',
         name='map_memory_node',
         executable='map_memory_node',
-        parameters=[LaunchConfiguration('map_memory_param_file')],
+        parameters=[sim_time, LaunchConfiguration('map_memory_param_file')],
     )
     ld.add_action(map_memory_param)
     ld.add_action(map_memory_node)
@@ -61,7 +63,7 @@ def generate_launch_description():
         package='planner',
         name='planner_node',
         executable='planner_node',
-        parameters=[LaunchConfiguration('planner_param_file')],
+        parameters=[sim_time, LaunchConfiguration('planner_param_file')],
     )
     ld.add_action(planner_param)
     ld.add_action(planner_node)
@@ -80,7 +82,7 @@ def generate_launch_description():
         package='control',
         name='control_node',
         executable='control_node',
-        parameters=[LaunchConfiguration('control_param_file')],
+        parameters=[sim_time, LaunchConfiguration('control_param_file')],
     )
     ld.add_action(control_param)
     ld.add_action(control_node)
@@ -90,6 +92,7 @@ def generate_launch_description():
         package='odometry_spoof',
         name='odometry_spoof',
         executable='odometry_spoof',
+        parameters=[sim_time],
     )
     ld.add_action(odometry_spoof_node)
 

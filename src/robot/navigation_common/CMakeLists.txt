@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(navigation_common)
+find_package(ament_cmake REQUIRED)
+find_package(nav_msgs REQUIRED)
+install(DIRECTORY include/ DESTINATION include)
+ament_export_include_directories(include)
+ament_export_dependencies(nav_msgs)
+ament_package()

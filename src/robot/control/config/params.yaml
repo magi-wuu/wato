@@ -1,3 +1,8 @@
-# control_node:
-#   ros__parameters:
-    
+control_node:
+  ros__parameters:
+    lookahead_distance: 0.6
+    goal_tolerance: 0.3
+    linear_speed: 0.5
+    max_angular_speed: 0.6
+    path_timeout: 2.5
+    odom_timeout: 0.5

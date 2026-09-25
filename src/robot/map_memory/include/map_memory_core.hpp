@@ -1,19 +1,15 @@
-#ifndef MAP_MEMORY_CORE_HPP_
-#define MAP_MEMORY_CORE_HPP_
-
-#include "rclcpp/rclcpp.hpp"
-
-namespace robot
-{
-
+#pragma once
+#include "navigation_common/grid.hpp"
+namespace robot {
 class MapMemoryCore {
-  public:
-    explicit MapMemoryCore(const rclcpp::Logger& logger);
+public:
+  MapMemoryCore(double resolution, double size, const std::string &frame)
+      : map_(grid(resolution, size, frame)) {}
+  void integrate(const nav_msgs::msg::OccupancyGrid &local,
+                 const geometry_msgs::msg::Pose &pose);
+  nav_msgs::msg::OccupancyGrid &map() { return map_; }
 
-  private:
-    rclcpp::Logger logger_;
+private:
+  nav_msgs::msg::OccupancyGrid map_;
 };
-
-}  
-
-#endif  
+} // namespace robot

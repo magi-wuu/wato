@@ -1,3 +1,5 @@
-# costmap_node:
-#   ros__parameters:
-
+costmap_node:
+  ros__parameters:
+    resolution: 0.1
+    size: 42.0
+    inflation_radius: 3.0

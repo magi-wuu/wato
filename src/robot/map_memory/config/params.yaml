@@ -1,3 +1,8 @@
-# map_memory_node:
-#   ros__parameters:
-    
+map_memory_node:
+  ros__parameters:
+    resolution: 0.2
+    size: 60.0
+    global_frame: sim_world
+    update_distance: 0.3
+    update_angle: 0.2
+    max_update_interval: 1.0

@@ -1,3 +1,8 @@
-# planner_node:
-#   ros__parameters:
-    
+planner_node:
+  ros__parameters:
+    lethal_cost: 40
+    cost_weight: 5.0
+    unknown_cost: 0.2
+    goal_tolerance: 0.3
+    goal_timeout: 180.0
+    replan_interval: 1.0
