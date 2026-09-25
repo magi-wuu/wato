@@ -55,4 +55,4 @@ The navigation algorithms are kept in `*_core.cpp`, while `*_node.cpp` handles R
 
 ## Testing
 
-Tests cover the main costmap, mapping, A*, and Pure Pursuit logic, including obstacle inflation, map transformations, unreachable goals, diagonal corner blocking, and controller stopping/turning.
+Had AI help me make some automated tests. I added them to check that the algorithms behaved correctly and to catch regressions while fixing issues. Tests cover the main costmap, mapping, A*, and Pure Pursuit logic, including obstacle inflation, map transformations, unreachable goals, diagonal corner blocking, and controller stopping/turning.
